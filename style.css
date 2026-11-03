@@ -891,3 +891,32 @@ table {
 .container:has(.integral-header) {
     margin-top: 40px;
 }
+    /* Perkecil jarak halaman di HP */
+    .differential-page,
+    .differentiation-page {
+        padding: 0 10px 20px;
+    }
+
+    .container,
+    .container:has(.integral-header) {
+        margin: 10px auto;
+        padding: 15px;
+    }
+
+    /* Label pojok kiri atas lebih kecil */
+    .calculator-box::before {
+        padding: 10px 18px;
+        font-size: 12px;
+    }
+
+    .calculator-box {
+        padding-top: 55px;
+    }
+
+    .differential-page .calculator-box {
+        padding: 25px 18px;
+    }
+
+    .differential-page .calculator-box::before {
+        padding: 10px 18px;
+    }
