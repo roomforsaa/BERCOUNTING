@@ -940,21 +940,28 @@ table {
 
     .categories {
         grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
+        gap: 12px;
     }
 
     .category-card {
-        aspect-ratio: 1 / 1;
+        aspect-ratio: auto;       /* tinggi mengikuti isi, tidak dipaksa */
+        min-height: 150px;
+        min-width: 0;
+        gap: 12px;
+        padding: 18px 10px;
     }
 
     .symbol {
-        font-size: 36px;
+        font-size: 34px;
+        line-height: 1;
     }
 
     .card-label {
-        bottom: 12px;
+        position: static;         /* tidak lagi menempel di bawah secara absolut */
         font-size: 10px;
+        line-height: 1.4;
         letter-spacing: 0.5px;
+        overflow-wrap: anywhere;
     }
 }
 
@@ -964,7 +971,11 @@ table {
         gap: 10px;
     }
 
+    .category-card {
+        min-height: 130px;
+    }
+
     .symbol {
-        font-size: 30px;
+        font-size: 28px;
     }
 }
