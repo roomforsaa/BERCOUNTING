@@ -920,3 +920,51 @@ table {
     .differential-page .calculator-box::before {
         padding: 10px 18px;
     }
+/* ==========================================================
+   RESPONSIF BERANDA
+   ========================================================== */
+@media (max-width: 768px) {
+
+    .hero {
+        padding: 40px 15px 30px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+        letter-spacing: 2px;
+    }
+
+    .hero p {
+        font-size: 13px;
+    }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .category-card {
+        aspect-ratio: 1 / 1;
+    }
+
+    .symbol {
+        font-size: 36px;
+    }
+
+    .card-label {
+        bottom: 12px;
+        font-size: 10px;
+        letter-spacing: 0.5px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .categories {
+        gap: 10px;
+    }
+
+    .symbol {
+        font-size: 30px;
+    }
+}
