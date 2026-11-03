@@ -1,0 +1,881 @@
+/* ==========================================================
+   BERCOUNTING - style.css
+   1. Reset & dasar          5. Hasil perhitungan
+   2. Warna & tema halaman   6. Komponen Differential / Linear
+   3. Beranda                7. Animasi
+   4. Header, kotak, tombol  8. Responsif
+   ========================================================== */
+
+
+/* ==========================================================
+   1. RESET & DASAR
+   ========================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+    min-height: 100vh;
+    color: #222222;
+}
+
+button,
+input,
+select,
+textarea,
+table {
+    font-family: inherit;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* ==========================================================
+   2. WARNA & TEMA HALAMAN
+   Warna tiap halaman diatur lewat variabel di bagian ini.
+   ========================================================== */
+:root {
+    /* Palet UNO */
+    --red: #e53935;
+    --red-dark: #9e2522;
+    --yellow: #fdd835;
+    --yellow-dark: #d4a900;
+    --green: #43a047;
+    --green-dark: #267b32;
+    --blue: #1976d2;
+    --blue-hover: #1565c0;
+    --blue-dark: #104c91;
+    --ink: #222222;
+    --muted: #777777;
+
+    /* Tema bawaan = halaman Integral */
+    --box-label: "INTEGRAL CALCULATOR";
+    --label-bg: var(--blue);
+    --label-text: #ffffff;
+    --label-accent: var(--blue);
+
+    --btn-bg: var(--yellow);
+    --btn-text: var(--ink);
+    --btn-shadow: var(--yellow-dark);
+    --btn-hover-bg: var(--blue-hover);
+    --btn-hover-text: #ffffff;
+}
+
+/* Warna header tiap halaman */
+.integral-header {
+    --header-bg: var(--red);
+    --header-shadow: var(--red-dark);
+}
+
+.differentiation-header {
+    --header-bg: var(--blue);
+    --header-shadow: var(--blue-dark);
+}
+
+.differential-header {
+    --header-bg: var(--green);
+    --header-shadow: var(--green-dark);
+}
+
+.linear-algebra-header {
+    --header-bg: var(--yellow);
+    --header-shadow: var(--yellow-dark);
+    --header-text: var(--ink);        /* ganti #ffffff jika ingin teks putih */
+}
+
+/* Tema halaman Differentiation */
+.differentiation-page {
+    --box-label: "DIFFERENTIATION CALCULATOR";
+    --label-bg: var(--yellow);
+    --label-text: var(--ink);
+    --label-accent: var(--yellow);
+
+    --btn-bg: var(--blue);
+    --btn-text: #ffffff;
+    --btn-shadow: var(--blue-dark);
+}
+
+/* Tema halaman Differential Equations */
+.differential-page {
+    --box-label: "DIFFERENTIAL SOLVER";
+    --label-bg: var(--yellow);
+    --label-text: var(--ink);
+
+    --card-bg: var(--yellow);
+    --card-shadow: var(--yellow-dark);
+    --card-number: var(--green);
+    --card-name: var(--ink);
+    --card-desc: var(--muted);
+}
+
+/* Tema halaman Linear Algebra (harus setelah .differential-page) */
+.linear-page {
+    --box-label: "MATRIX SOLVER";
+    --label-bg: var(--green);
+    --label-text: #ffffff;
+
+    --btn-bg: var(--blue);
+    --btn-text: #ffffff;
+    --btn-shadow: var(--blue-dark);
+
+    --card-bg: var(--green);
+    --card-shadow: var(--green-dark);
+    --card-number: #ffffff;
+    --card-name: #ffffff;
+    --card-desc: #ffffff;
+}
+
+
+/* ==========================================================
+   3. BERANDA
+   ========================================================== */
+.hero {
+    text-align: center;
+    padding: 70px 20px 55px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    color: #222222;
+}
+
+.hero p {
+    margin-top: 12px;
+    font-size: 15px;
+    color: #777777;
+    letter-spacing: 1px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 35px;
+    border: 1.5px solid rgba(120, 120, 120, 0.35);
+    border-radius: 24px;
+    background: rgba(128, 128, 128, 0.12);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.category-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 3 / 4;
+    padding: 15px;
+    border: 3px solid #eeeeee;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+}
+
+.red    { background-color: #e53935; }
+.yellow { background-color: #fdd835; }
+.green  { background-color: #43a047; }
+.blue   { background-color: #1e88e5; }
+
+.symbol {
+    color: #ffffff;
+    -webkit-text-stroke: 0.8px #777777;
+    font-family: Georgia, serif;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.card-label {
+    position: absolute;
+    bottom: 20px;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+
+/* ==========================================================
+   4. HEADER, TOMBOL BACK, KOTAK KALKULATOR
+   ========================================================== */
+
+/* ----- Header (dipakai bersama oleh keempat halaman) ----- */
+:is(.integral-header,
+    .differentiation-header,
+    .differential-header,
+    .linear-algebra-header) {
+    position: relative;
+    margin-bottom: 35px;
+    padding: 65px 20px 35px;
+    text-align: center;
+    background: var(--header-bg);
+    border: 5px solid #ffffff;
+    border-radius: 28px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    animation: fadeIn 0.8s ease;
+}
+
+:is(.integral-header,
+    .differentiation-header,
+    .differential-header,
+    .linear-algebra-header) h1 {
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: var(--header-text, #ffffff);
+    text-shadow: 2px 3px 0 var(--header-shadow);
+}
+
+:is(.integral-header,
+    .differentiation-header,
+    .differential-header,
+    .linear-algebra-header) p {
+    margin-top: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--header-text, #ffffff);
+}
+
+/* ----- Tombol Back ----- */
+.back-button {
+    position: absolute;
+    top: 15px;
+    left: 18px;
+    display: inline-block;
+    padding: 10px 18px;
+    color: var(--red);
+    background: #ffffff;
+    border: 2px solid #eeeeee;
+    border-radius: 8px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.back-button:hover {
+    background: #fff3f3;
+    transform: translateY(-3px);
+}
+
+/* Back di dalam header Differential / Linear */
+.differential-header .back-button,
+.linear-algebra-header .back-button {
+    top: 18px;
+    padding: 8px 16px;
+    color: var(--header-text, #ffffff);
+    background: rgba(255, 255, 255, 0.18);
+    border: 1.5px solid currentColor;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+.differential-header .back-button:hover,
+.linear-algebra-header .back-button:hover {
+    background: rgba(255, 255, 255, 0.32);
+}
+
+/* ----- Kotak kalkulator ----- */
+.calculator-box {
+    position: relative;
+    max-width: 950px;
+    margin: 35px auto;
+    padding: 65px 35px 35px;
+    background: #ffffff;
+    border: 3px solid #eeeeee;
+    border-radius: 24px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.09);
+    animation: slideUp 0.8s ease;
+}
+
+/* Label di pojok kiri atas (teks & warna dari variabel tema) */
+.calculator-box::before {
+    content: var(--box-label);
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    padding: 13px 28px;
+    background: var(--label-bg);
+    color: var(--label-text);
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    border-radius: 20px 0 18px 0;
+}
+
+.calculator-box label {
+    display: block;
+    margin: 20px 0 9px;
+    padding-left: 10px;
+    border-left: 3px solid var(--label-accent);
+    font-size: 14px;
+    font-weight: 700;
+    color: #333333;
+    letter-spacing: 0.3px;
+}
+
+/* ----- Input, select, textarea ----- */
+.calculator-box input,
+.calculator-box select,
+.calculator-box textarea {
+    width: 100%;
+    padding: 14px;
+    background: #ffffff;
+    border: 1.5px solid #dddddd;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #333333;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.calculator-box textarea {
+    line-height: 1.5;
+    resize: vertical;
+}
+
+.calculator-box input:focus,
+.calculator-box select:focus,
+.calculator-box textarea:focus {
+    border-color: #1e88e5;
+    box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.15);
+}
+
+.input-row {
+    display: flex;
+    gap: 20px;
+}
+
+.input-row > div {
+    flex: 1;
+}
+
+/* ----- Tombol utama (Calculate / Solve) ----- */
+.calculator-box button:not(.method-card) {
+    width: 100%;
+    margin-top: 25px;
+    padding: 16px;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: 3px solid #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 5px 0 var(--btn-shadow),
+                0 7px 12px rgba(0, 0, 0, 0.12);
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.calculator-box button:not(.method-card):hover {
+    background: var(--btn-hover-bg);
+    color: var(--btn-hover-text);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 0 var(--btn-shadow),
+                0 10px 15px rgba(0, 0, 0, 0.12);
+}
+
+.calculator-box button:not(.method-card):active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 var(--btn-shadow);
+}
+
+
+/* ==========================================================
+   5. HASIL PERHITUNGAN
+   ========================================================== */
+
+/* Kotak hasil tidak boleh melebihi lebar induknya */
+.result-summary,
+.step-card,
+.final-result {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* Rumus panjang bisa digeser di dalam kotaknya sendiri */
+.step-card mjx-container[display="true"],
+.final-result mjx-container[display="true"] {
+    max-width: 100%;
+    padding: 0.4em 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.step-card mjx-container[display="true"] {
+    font-size: 95%;
+}
+
+/* ----- Ringkasan hasil ----- */
+.result-summary {
+    margin-top: 30px;
+    padding: 25px;
+    background: #ffffff;
+    border: 2px solid var(--green);
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+}
+
+.result-summary h3 {
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #dddddd;
+    font-size: 20px;
+    color: #222222;
+    letter-spacing: 0.5px;
+}
+
+.differentiation-page .result-summary h3 {
+    color: var(--green);
+}
+
+.result-summary p {
+    margin: 9px 0;
+    font-size: 14px;
+    color: #666666;
+    animation: resultAppear 0.5s ease;
+}
+
+.final-result {
+    margin-top: 20px;
+    padding: 22px;
+    background: var(--green);
+    color: #ffffff;
+    border: 3px solid #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 5px 0 var(--green-dark),
+                0 7px 12px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.final-result h4 {
+    margin-bottom: 6px;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* ----- Langkah perhitungan ----- */
+.calculation-steps {
+    margin-top: 30px;
+}
+
+.calculation-steps h3 {
+    margin: 30px 0 22px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--line, #e5e7eb);
+    font-size: 23px;
+    font-weight: 800;
+    color: #333333;
+    letter-spacing: 0.5px;
+}
+
+.step-card {
+    margin-bottom: 22px;
+    padding: 18px;
+    background: #ffffff;
+    border: 2px solid #d1d5db;
+    border-radius: 20px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-4px);
+    border-color: #b0b7c3;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.step-card > h4 {
+    margin-bottom: 10px;
+    font-size: 17px;
+    font-weight: 800;
+    color: #333333;
+}
+
+.step-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.step-heading h4 {
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.5;
+    color: #333333;
+    letter-spacing: 0.4px;
+}
+
+.step-number {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--red);
+    color: #ffffff;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
+    font-size: 15px;
+    font-weight: 900;
+}
+
+.step-formula,
+.step-calculation {
+    margin-top: 12px;
+    padding: 18px;
+    background: #f8fafc;
+    border: 2px solid #e8edf2;
+    border-left: 4px solid var(--blue);
+    border-radius: 12px;
+    font-size: 15px;
+    line-height: 1.9;
+    color: #333333;
+    overflow-x: auto;
+}
+
+.step-final {
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--green);
+    color: #ffffff;
+    border: 3px solid #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 5px 0 var(--green-dark),
+                0 7px 12px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+/* ----- Tabel langkah ----- */
+.step-table {
+    margin-top: 15px;
+    overflow-x: auto;
+}
+
+.step-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    text-align: center;
+    font-size: 14px;
+}
+
+.step-table th {
+    background: var(--red);
+    color: #ffffff;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.step-table th,
+.step-table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.step-table td {
+    color: #555555;
+}
+
+.step-table tbody tr:nth-child(even) td {
+    background: #f8fafc;
+}
+
+.step-table tbody tr:hover td {
+    background: #fff8df;
+    transition: background 0.2s ease;
+}
+
+
+/* ==========================================================
+   6. KOMPONEN DIFFERENTIAL & LINEAR ALGEBRA
+   ========================================================== */
+.differential-page {
+    min-height: 100vh;
+    padding: 40px 7%;
+}
+
+.differential-content {
+    max-width: 850px;
+    margin: auto;
+}
+
+.differential-page .calculator-box {
+    padding: 35px;
+    border: 1px solid #e5e5e5;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+}
+
+.differential-page .calculator-box::before {
+    top: -1px;
+    left: -1px;
+}
+
+.differential-page .calculator-box p {
+    font-size: 14px;
+    color: #777777;
+}
+
+.choose-label {
+    margin: 35px 0 10px;
+}
+
+/* ----- Kartu pilihan metode ----- */
+.method-selection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.method-card {
+    padding: 22px;
+    text-align: left;
+    background: var(--card-bg);
+    border: 3px solid #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 5px 0 var(--card-shadow),
+                0 7px 12px rgba(0, 0, 0, 0.12);
+    font-weight: 800;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.method-card:hover,
+.method-card:focus-visible {
+    background: var(--blue);
+    box-shadow: 0 5px 0 var(--blue-dark),
+                0 7px 12px rgba(0, 0, 0, 0.12);
+    transform: translateY(-3px);
+}
+
+.method-card.active {
+    border-color: var(--ink);
+    transform: translateY(-3px);
+}
+
+.method-number,
+.method-name,
+.method-description {
+    display: block;
+}
+
+.method-number {
+    margin-bottom: 14px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--card-number);
+}
+
+.method-name {
+    margin-bottom: 9px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--card-name);
+}
+
+.method-description {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--card-desc);
+}
+
+.method-card:hover :is(.method-number, .method-name, .method-description),
+.method-card:focus-visible :is(.method-number, .method-name, .method-description) {
+    color: #ffffff;
+}
+
+/* ----- Input ----- */
+.equation-input-section {
+    margin-top: 35px;
+    padding-top: 28px;
+    border-top: 1px solid #e8e8e8;
+}
+
+.equation-input-section h3 {
+    margin-bottom: 24px;
+    font-size: 19px;
+    color: #222222;
+}
+
+.input-hint {
+    margin: 0 0 12px;
+    opacity: 0.75;
+}
+
+.initial-condition {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+/* ----- Hasil ----- */
+.solution-section {
+    margin-top: 35px;
+    padding-top: 28px;
+    border-top: 1px solid #e8e8e8;
+}
+
+.solution-section h3 {
+    display: none;
+}
+
+.solution-placeholder {
+    min-height: 180px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #fafafa;
+    border: 1px dashed #d8d8d8;
+    border-radius: 12px;
+}
+
+.solution-output {
+    text-align: left;
+}
+
+.placeholder-symbol {
+    margin-bottom: 12px;
+    font-size: 36px;
+    color: var(--green);
+}
+
+.solution-placeholder p {
+    margin-bottom: 7px;
+    font-size: 14px;
+    color: #555555;
+}
+
+.placeholder-caption {
+    font-size: 12px;
+    color: #999999;
+}
+
+
+/* ==========================================================
+   7. ANIMASI
+   ========================================================== */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes resultAppear {
+    from { opacity: 0; transform: translateY(15px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ==========================================================
+   8. RESPONSIF
+   ========================================================== */
+@media (max-width: 768px) {
+
+    :is(.integral-header,
+        .differentiation-header,
+        .differential-header,
+        .linear-algebra-header) {
+        padding: 80px 15px 20px;
+    }
+
+    :is(.integral-header,
+        .differentiation-header,
+        .differential-header,
+        .linear-algebra-header) h1 {
+        font-size: 28px;
+        letter-spacing: 2px;
+    }
+
+    :is(.integral-header,
+        .differentiation-header,
+        .differential-header,
+        .linear-algebra-header) p {
+        font-size: 13px;
+    }
+
+    .back-button {
+        top: 20px;
+        left: 20px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .container {
+        margin: 15px;
+        padding: 20px;
+    }
+
+    .calculator-box {
+        margin: 20px auto;
+        padding: 65px 22px 22px;
+    }
+
+    .differential-page .calculator-box {
+        padding: 25px 22px;
+    }
+
+    .input-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .final-result {
+        font-size: 23px;
+    }
+
+    .step-table table {
+        min-width: 500px;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .method-selection,
+    .initial-condition {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Differentiation | BERCOUNTING</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="differentiation-page">
+
+    <main class="container">
+
+        <div class="differentiation-header">
+
+            <a href="index.html" class="back-button">
+                Back 
+            </a>
+
+            <h1>DIFFERENTIATION</h1>
+
+            <p>Derivative Calculator</p>
+
+        </div>
+        <div class="calculator-box">
+
+         <label for="function">Mathematical Function f(x)</label>
+            <input type="text" id="function" placeholder="Example: x^2 + sin(x)">
+
+            <label for="method">Differentiation Method</label>
+            <select id="method">
+                <option value="1">First Derivative</option>
+                <option value="2">Second Derivative</option>
+                <option value="3">Third Derivative</option>
+                <option value="4">Fourth Derivative</option>
+                <option value="5">Fifth Derivative</option>
+            </select>
+
+            <button onclick="calculateDerivative()">Calculate Derivative</button>
+
+            <div id="result"></div>
+
+        </div>
+
+    </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/13.2.0/math.min.js"></script>
+
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+    },
+    svg: {
+        fontCache: 'global'
+    }
+};
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+<script src="script.js"></script>
+</body>
+</html>

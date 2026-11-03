@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Linear Algebra | BERCOUNTING</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjs@13.2.0/lib/browser/math.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+
+    <main class="differential-page linear-page">
+
+        <section class="linear-algebra-header">
+            <a href="index.html" class="back-button">Back</a>
+
+            <h1>LINEAR ALGEBRA</h1>
+            <p>Work with matrices and linear systems step by step.</p>
+        </section>
+
+        <section class="differential-content">
+
+            <div class="calculator-box">
+                <p class="choose-label">Choose an operation.</p>
+
+                <div class="method-selection">
+
+                    <button class="method-card active" type="button" data-method="determinant" aria-pressed="true">
+                        <span class="method-number">01</span>
+                        <span class="method-name">Determinant</span>
+                        <span class="method-description">Compute det(A) using row reduction.</span>
+                    </button>
+
+                    <button class="method-card" type="button" data-method="inverse" aria-pressed="false">
+                        <span class="method-number">02</span>
+                        <span class="method-name">Inverse Matrix</span>
+                        <span class="method-description">Find A⁻¹ with Gauss-Jordan elimination.</span>
+                    </button>
+
+                    <button class="method-card" type="button" data-method="system" aria-pressed="false">
+                        <span class="method-number">03</span>
+                        <span class="method-name">Linear System</span>
+                        <span class="method-description">Solve Ax = b by row reduction.</span>
+                    </button>
+
+                    <button class="method-card" type="button" data-method="multiply" aria-pressed="false">
+                        <span class="method-number">04</span>
+                        <span class="method-name">Matrix Multiplication</span>
+                        <span class="method-description">Compute A × B entry by entry.</span>
+                    </button>
+
+                </div>
+
+                <div class="equation-input-section">
+                    <h3>Enter Your Matrix</h3>
+                    <p class="input-hint">One row per line, entries separated by spaces or commas. Fractions such as 1/2 are allowed.</p>
+
+                    <label for="matrix-a" id="matrix-a-label">Matrix A</label>
+                    <textarea id="matrix-a" rows="4" spellcheck="false"></textarea>
+
+                    <div id="matrix-b-group" hidden>
+                        <label for="matrix-b" id="matrix-b-label">Matrix B</label>
+                        <textarea id="matrix-b" rows="4" spellcheck="false"></textarea>
+                    </div>
+
+                    <button type="button" class="solve-button">Solve</button>
+                </div>
+
+                <div class="solution-section" id="solution-section" hidden>
+                    <h3>Solution Steps</h3>
+                    <div class="solution-placeholder" id="solution-result" aria-live="polite"></div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Differential Equations | BERCOUNTING</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjs@13.2.0/lib/browser/math.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+
+    <main class="differential-page">
+
+        <section class="differential-header">
+            <a href="index.html" class="back-button">Back</a>
+
+            <h1>DIFFERENTIAL EQUATIONS</h1>
+            <p>Explore and solve differential equations step by step.</p>
+        </section>
+
+        <section class="differential-content">
+
+            <div class="calculator-box">
+                <p class="choose-label">Choose a method to solve your differential equation.</p>
+
+                <div class="method-selection">
+
+                    <button class="method-card active" type="button" data-method="separable" aria-pressed="true">
+                        <span class="method-number">01</span>
+                        <span class="method-name">Separable Equations</span>
+                        <span class="method-description">Solve equations that can be separated into two variables.</span>
+                    </button>
+
+                    <button class="method-card" type="button" data-method="linear" aria-pressed="false">
+                        <span class="method-number">02</span>
+                        <span class="method-name">First-Order Linear Equations</span>
+                        <span class="method-description">Solve linear differential equations using an integrating factor.</span>
+                    </button>
+
+                </div>
+
+                <div class="equation-input-section">
+                    <h3>Enter Your Equation</h3>
+
+                    <label for="equation">Differential Equation</label>
+                    <input
+                        type="text"
+                        id="equation"
+                        placeholder="Example: dy/dx = 2*x"
+                        autocomplete="off"
+                    >
+
+                    <div class="initial-condition">
+                        <div>
+                            <label for="initial-x">Initial x</label>
+                            <input
+                                type="number"
+                                id="initial-x"
+                                step="any"
+                                placeholder="Example: 0"
+                            >
+                        </div>
+
+                        <div>
+                            <label for="initial-y">Initial y</label>
+                            <input
+                                type="number"
+                                id="initial-y"
+                                step="any"
+                                placeholder="Example: 1"
+                            >
+                        </div>
+                    </div>
+
+                    <button type="button" class="solve-button">Solve Equation</button>
+                </div>
+
+                <div class="solution-section" id="solution-section" hidden>
+                    <h3>Solution Steps</h3>
+                    <div class="solution-placeholder" id="solution-result" aria-live="polite"></div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
