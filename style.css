@@ -879,3 +879,15 @@ table {
         grid-template-columns: 1fr;
     }
 }
+.differential-page {
+    min-height: 100vh;
+    padding: 40px 20px;   /* sebelumnya 40px 7% */
+}
+.differentiation-page {
+    padding: 40px 20px;
+    /* variabel tema yang sudah ada tetap di sini */
+}
+/* Turunkan box abu-abu halaman Integral agar sejajar dengan Differential */
+.container:has(.integral-header) {
+    margin-top: 40px;
+}
